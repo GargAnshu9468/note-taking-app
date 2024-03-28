@@ -6,7 +6,6 @@ from auth import router as auth_router
 from auth import SECRET_KEY, ALGORITHM
 from database import db
 from models import Note
-import json
 import jwt
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")

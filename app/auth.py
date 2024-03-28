@@ -10,7 +10,7 @@ import jwt
 router = APIRouter()
 
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
-SECRET_KEY = "your-secret-key"
+SECRET_KEY = "note-taking-app"
 ALGORITHM = "HS256"
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
