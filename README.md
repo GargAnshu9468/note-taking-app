@@ -11,6 +11,7 @@ This is a simple note-taking application built with FastAPI, MongoDB, and Redis.
   - `db_config.py`: Establishes connection to MongoDB database.
   - `redis_config.py`: Establishes connection to Redis.
   - `models.py`: Defines Pydantic models for request/response validation.
+  - `test.py`: For testing APIs.
 - `Dockerfile`: Defines Docker configuration for containerizing the application.
 - `requirements.txt`: Lists Python dependencies for the application.
 - `README.md`: Documentation file (you're currently reading it!).
