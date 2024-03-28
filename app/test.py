@@ -21,7 +21,7 @@ def test_delete_note_by_id(url, headers, note_id):
     return requests.delete(url=f"{url}/{note_id}", headers=headers)
 
 
-url = 'http://localhost:8001/notes'
+url = 'http://localhost:8000/notes'
 
 token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbnNodWdhcmciLCJleHAiOjE3MTE2MzQyNjJ9.iZAZ5k_MW2QP6cEp92Lc9YUYi2WgyfSLB_pStTUaEQw"
 
