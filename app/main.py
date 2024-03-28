@@ -1,5 +1,6 @@
 from crud import create_note, get_notes, get_note_by_id, update_note, delete_note
 from fastapi import FastAPI, Depends, HTTPException, status
+from redis_config import RedisCache, set_cache, get_cache
 from fastapi.security import OAuth2PasswordBearer
 from fastapi.responses import JSONResponse
 from auth import router as auth_router
@@ -10,6 +11,12 @@ import jwt
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 app = FastAPI()
+
+REDIS_HOST = "localhost"
+REDIS_PASSWORD = None
+REDIS_PORT = 6379
+
+redis_cache = RedisCache(host=REDIS_HOST, port=REDIS_PORT, password=REDIS_PASSWORD)
 
 
 @app.exception_handler(HTTPException)
@@ -39,7 +46,10 @@ async def create_new_note(note: Note, token: str = Depends(oauth2_scheme)):
 
 
 @app.get("/notes", response_model=list)
-async def get_user_notes(token: str = Depends(oauth2_scheme)):
+async def get_user_notes(
+    token: str = Depends(oauth2_scheme),
+    redis_cache = Depends(redis_cache)
+):
 
     payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
     username = payload.get("sub")
@@ -49,10 +59,18 @@ async def get_user_notes(token: str = Depends(oauth2_scheme)):
     if not user:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token")
 
+    redis_key = f"note-taking-app"
+    redis_result = get_cache(key=redis_key, redis_cache=redis_cache)
+
+    if redis_result:
+        return redis_result
+
     notes = get_notes(username)
 
     if not notes:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Notes not found")
+
+    set_cache(key=redis_key, value=list(map(dict, notes)), redis_cache=redis_cache)
 
     return notes
 

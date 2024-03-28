@@ -23,7 +23,7 @@ def test_delete_note_by_id(url, headers, note_id):
 
 url = 'http://localhost:8000/notes'
 
-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbnNodWdhcmciLCJleHAiOjE3MTE2MzQyNjJ9.iZAZ5k_MW2QP6cEp92Lc9YUYi2WgyfSLB_pStTUaEQw"
+token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbnNodWdhcmciLCJleHAiOjE3MTE2Mzk5ODB9.ZBfDJkU_-m7oDl0G4TeNT6pc_Twc4mzLAim81MU1pmc"
 
 headers = {
     'Authorization': f'Bearer {token}'
@@ -37,7 +37,7 @@ json = {
 response = test_create_note(url, headers, json)
 print(f"\nRESPONSE :: {response.json()}\n")
 
-note_id = "6605673024f6e9b57e0c8d94"
+note_id = "660586ec2817881f19ce97c0"
 
 response = test_get_note_by_id(url, headers, note_id)
 print(f"\nRESPONSE :: {response.json()}\n")
