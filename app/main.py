@@ -4,7 +4,7 @@ from fastapi.security import OAuth2PasswordBearer
 from fastapi.responses import JSONResponse
 from auth import router as auth_router
 from auth import SECRET_KEY, ALGORITHM
-from database import db
+from db_config import db
 from models import Note
 import jwt
 

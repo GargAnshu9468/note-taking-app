@@ -1,6 +1,6 @@
 from typing import List, Optional
 from bson import ObjectId
-from database import db
+from db_config import db
 from models import Note
 
 

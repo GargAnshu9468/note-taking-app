@@ -3,7 +3,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from passlib.context import CryptContext
 from datetime import datetime, timedelta
 from typing import Optional
-from database import db
+from db_config import db
 from models import User
 import jwt
 

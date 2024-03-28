@@ -8,7 +8,7 @@ This is a simple note-taking application built with FastAPI, and MongoDB. It all
   - `main.py`: Main FastAPI application file with endpoint definitions.
   - `auth.py`: Handles user authentication and authorization.
   - `crud.py`: Implements CRUD operations for notes.
-  - `database.py`: Establishes connection to MongoDB database.
+  - `db_config.py`: Establishes connection to MongoDB database.
   - `models.py`: Defines Pydantic models for request/response validation.
 - `Dockerfile`: Defines Docker configuration for containerizing the application.
 - `requirements.txt`: Lists Python dependencies for the application.
@@ -34,7 +34,7 @@ This is a simple note-taking application built with FastAPI, and MongoDB. It all
 7. Run the application:
 
     ```bash
-    uvicorn main:app --host 0.0.0.0 --port 8000
+    uvicorn main:app --host localhost --port 8000
 
 ## Building and Running the Application with Docker
 
