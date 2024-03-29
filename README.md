@@ -1,6 +1,6 @@
 # Note-Taking Application
 
-This is a simple note-taking application built with FastAPI, MongoDB, and Redis. It allows users to register, login, create, view, update, and delete notes. This application also uses Redis to cache notes for the better performance.
+This is a simple note-taking application built with FastAPI, MongoDB, and Redis. It allows users to register, login, create, view, update, and delete notes. This application is Dockerized and also uses Redis to cache notes for the better performance.
 
 ## Project Structure
 
