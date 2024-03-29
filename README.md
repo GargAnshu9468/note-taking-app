@@ -18,7 +18,7 @@ This is a simple note-taking application built with FastAPI, MongoDB, and Redis.
 
 ## Installation and Setup
 
-1. Ensure you have Python 3.9 or later installed on your system.
+1. Ensure you have Python 3.11 or later installed on your system.
 2. Install Docker if you haven't already (for containerization).
 3. Clone this repository:
 
