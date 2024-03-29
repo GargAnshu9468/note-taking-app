@@ -33,7 +33,7 @@ async def generic_exception_handler(request, exc):
 async def create_new_note(note: Note, token: str = Depends(oauth2_scheme)):
 
     payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-    username = payload.get("sub")
+    username = payload.get("user")
 
     user = db.get_collection("users").find_one({"username": username})
 
@@ -52,7 +52,7 @@ async def get_user_notes(
 ):
 
     payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-    username = payload.get("sub")
+    username = payload.get("user")
 
     user = db.get_collection("users").find_one({"username": username})
 
@@ -79,7 +79,7 @@ async def get_user_notes(
 async def get_notes_by_id(note_id: str, token: str = Depends(oauth2_scheme)):
 
     payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-    username = payload.get("sub")
+    username = payload.get("user")
 
     user = db.get_collection("users").find_one({"username": username})
 
@@ -98,7 +98,7 @@ async def get_notes_by_id(note_id: str, token: str = Depends(oauth2_scheme)):
 async def update_existing_note(note_id: str, note: Note, token: str = Depends(oauth2_scheme)):
 
     payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-    username = payload.get("sub")
+    username = payload.get("user")
 
     user = db.get_collection("users").find_one({"username": username})
 
@@ -117,7 +117,7 @@ async def update_existing_note(note_id: str, note: Note, token: str = Depends(oa
 async def delete_existing_note(note_id: str, token: str = Depends(oauth2_scheme)):
 
     payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-    username = payload.get("sub")
+    username = payload.get("user")
 
     user = db.get_collection("users").find_one({"username": username})
 
